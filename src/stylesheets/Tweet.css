@@ -1,0 +1,8 @@
+.ui.segment.tweet:hover {
+  border: 2px solid #1da1f2;
+  color: black;
+}
+
+.ui.segment.tweet p {
+  color: black;
+}
