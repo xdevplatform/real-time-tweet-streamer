@@ -55,15 +55,15 @@ npm start
 - Twitter: [@tonyv00](https://twitter.com/tonyv00)
 - Github: [@tonyv](https://github.com/tonyv)
 
-## 🤝 Contributing
+# How to Contribute
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/twitterdev/real-time-tweet-streamer/issues).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
+We'd love to get patches from you!
 
 ## 📝 License
 
-Copyright © 2020 [Tony Vu](https://github.com/tonyv).<br />
-This project is [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0) licensed.
+By contributing your code, you agree to license your contribution under the
+terms of the APLv2: https://github.com/twitter/repo-scaffolding/blob/master/LICENSE
+
+## Code of Conduct
+
+Read our [Code of Conduct](CODE_OF_CONDUCT.md) for the project.
