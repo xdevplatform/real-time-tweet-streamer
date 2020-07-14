@@ -65,7 +65,11 @@ app.get("/api/rules", async (req, res) => {
     const response = await get(requestConfig);
 
     if (response.statusCode !== 200) {
-      throw new Error(response.body.error.message);
+      if (response.statusCode === 403) {
+        res.status(403).send(response.body);
+      } else {
+        throw new Error(response.body.error.message);
+      }
     }
 
     res.send(response);
@@ -139,7 +143,6 @@ const streamTweets = (socket, token) => {
         reconnect(stream, socket, token);
       });
   } catch (e) {
-    console.log("e =>", e);
     socket.emit("authError", authMessage);
   }
 };
@@ -157,7 +160,6 @@ io.on("connection", async (socket) => {
     io.emit("connect", "Client connected");
     const stream = streamTweets(io, token);
   } catch (e) {
-    console.log("here", e);
     io.emit("authError", authMessage);
   }
 });
