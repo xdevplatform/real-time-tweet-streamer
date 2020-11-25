@@ -1,4 +1,4 @@
-const { createProxyMiddleware } = require("http-proxy-middleware");
+const createProxyMiddleware = require("http-proxy-middleware");
 
 // This proxy redirects requests to /api endpoints to
 // the Express server running on port 3001.
