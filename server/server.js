@@ -7,7 +7,7 @@ const socketIo = require("socket.io");
 const http = require("http");
 
 const app = express();
-let port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const post = util.promisify(request.post);
 const get = util.promisify(request.get);
 
@@ -49,7 +49,7 @@ const sleep = async (delay) => {
 
 app.get("/api/rules", async (req, res) => {
   if (!BEARER_TOKEN) {
-    res.status(400).send(authMessage);
+    return res.status(400).send(authMessage);
   }
 
   const token = BEARER_TOKEN;
@@ -66,21 +66,21 @@ app.get("/api/rules", async (req, res) => {
 
     if (response.statusCode !== 200) {
       if (response.statusCode === 403) {
-        res.status(403).send(response.body);
+        return res.status(403).send(response.body);
       } else {
         throw new Error(response.body.error.message);
       }
     }
 
-    res.send(response);
+    return res.send(response);
   } catch (e) {
-    res.send(e);
+    return res.status(500).send(e.message);
   }
 });
 
 app.post("/api/rules", async (req, res) => {
   if (!BEARER_TOKEN) {
-    res.status(400).send(authMessage);
+    return res.status(400).send(authMessage);
   }
 
   const token = BEARER_TOKEN;
@@ -96,12 +96,12 @@ app.post("/api/rules", async (req, res) => {
     const response = await post(requestConfig);
 
     if (response.statusCode === 200 || response.statusCode === 201) {
-      res.send(response);
+      return res.send(response);
     } else {
-      throw new Error(response);
+      throw new Error(JSON.stringify(response.body));
     }
   } catch (e) {
-    res.send(e);
+    return res.status(500).send(e.message);
   }
 });
 
@@ -172,7 +172,9 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../build", "index.html"));
   });
 } else {
-  port = 3001;
+  PORT = 3001;
 }
 
-server.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});

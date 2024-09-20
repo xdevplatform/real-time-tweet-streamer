@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "3001:3001"  # Map container's 3001 to host's 3001
+    environment:
+      - NODE_ENV=production
+      - PORT=3001  # Set the PORT environment variable
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/build

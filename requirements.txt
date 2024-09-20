@@ -1,0 +1,2 @@
+# This file is intentionally left empty as the project primarily uses Node.js
+# Add any Python dependencies here if needed in the future

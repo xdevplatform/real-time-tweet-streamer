@@ -37,7 +37,9 @@
     "server": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker-start": "npm run docker-build && PORT=3001 NODE_ENV=production npm run server",
+    "docker-build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -34,7 +34,9 @@ const reducer = (state, action) => {
 const RuleList = () => {
   const initialState = { rules: [], newRule: "", isLoading: false, errors: [] };
   const [state, dispatch] = useReducer(reducer, initialState);
+  // eslint-disable-next-line no-unused-vars
   const exampleRule = "from:twitterdev has:links";
+  // eslint-disable-next-line no-unused-vars
   const ruleMeaning = `This example rule will match Tweets posted by 
      TwtterDev containing links`;
   const operatorsURL =
